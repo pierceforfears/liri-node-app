@@ -34,7 +34,7 @@ function mainFunction(action, value) {
             break;
     }
 }
-
+// "concert-this":  get concert information
 function concertThis(artist) {
 
     artist = process.argv.slice(3).join("-");
@@ -48,7 +48,7 @@ function concertThis(artist) {
             console.log(err);
         })
 }
-
+// "spotify-this-song": get song details
 function spotifyThis(songName) {
     console.log(songName)
     // const songName = process.argv.slice(3).join(" ");
@@ -72,22 +72,12 @@ function spotifyThis(songName) {
     }
 
 }
-
+// "movie-this":  get movie details
 function movieThis(movieName) {
 
     // const movieName = process.argv.slice(3).join(" ");
     movieName = movieName || "Mr. Nobody";
     var queryUrl = `http://www.omdbapi.com/?t=${movieName}&apikey=trilogy`;
-    // if (movieName === "") {
-    // return movieName("mr+nobody");
-    // console.log("Movie Title: Mr. Nobody");
-    // console.log("Movie Year: 2009");
-    // console.log("IMDB Rating: 7.8/10");
-    // console.log("Rotten Tomatoes Rating: 67%");
-    // console.log("Country: Belgium, Germany, Canada, France, USA, UK");
-    // console.log("Plot Summary: A boy stands on a station platform as a train is about to leave. Should he go with his mother or stay with his father? Infinite possibilities arise from this decision. As long as he doesn't choose, anything is possible.");
-    // console.log("Actors: Jared Leto, Sarah Polley, Diane Kruger, Linh Dan Pham");
-    // } else {
     axios.get(queryUrl).then(function (response) {
         console.log("Movie Title: " + response.data.Title);
         console.log("Movie Year: " + response.data.Year);
@@ -108,7 +98,7 @@ function movieThis(movieName) {
         })
 }
 
-
+// "do-what-it-says": read random.txt and get command + search keywords
 function doWhat() {
     fs.readFile("random.txt", "utf8", function (err, data) {
         if (err) {
