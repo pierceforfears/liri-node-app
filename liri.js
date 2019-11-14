@@ -37,7 +37,7 @@ function mainFunction(action, value) {
 
 function concertThis(artist) {
 
-    // const artist = process.argv.slice(3).join("+");
+    // const artist = process.argv.slice(3).join("-");
     let queryUrl = `https://api.seatgeek.com/2/events?client_id=ODU1MTQ4M3wxNTczNjc5ODUyLjkz&performers.slug=${artist}`;
     axios.get(queryUrl).then(function (response) {
         console.log("Venue: " + response.data.events[0].venue.name)
@@ -51,7 +51,7 @@ function concertThis(artist) {
 
 function spotifyThis(songName) {
     console.log(songName)
-    // const songName = process.argv.slice(3).join("+");
+    // const songName = process.argv.slice(3).join(" ");
     songName = songName || "The Sign Ace";
     if (songName === "") {
         // console.log("Artist Name: Ace of Base");
@@ -75,9 +75,9 @@ function spotifyThis(songName) {
 
 function movieThis(movieName) {
 
-    // const movieName = process.argv.slice(3).join("+");
+    // const movieName = process.argv.slice(3).join(" ");
     movieName = movieName || "Mr. Nobody";
-    var queryUrl = "http://www.omdbapi.com/?t=" + movieName + "&y=&plot=short&apikey=trilogy";
+    var queryUrl = `http://www.omdbapi.com/?t=${movieName}&apikey=trilogy`;
     // if (movieName === "") {
     // return movieName("mr+nobody");
     // console.log("Movie Title: Mr. Nobody");
@@ -94,6 +94,7 @@ function movieThis(movieName) {
         console.log("IMDB Rating: " + response.data.Ratings[0].Value);
         console.log("Rotten Tomatoes Rating: " + response.data.Ratings[1].Value);
         console.log("Country: " + response.data.Country);
+        console.log("Language: " + response.data.Language);
         console.log("Plot Summary: " + response.data.Plot);
         console.log("Actors: " + response.data.Actors);
         if (movieName === "Mr. Nobody") {
