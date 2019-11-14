@@ -37,7 +37,7 @@ function mainFunction(action, value) {
 
 function concertThis(artist) {
 
-    // const artist = process.argv.slice(3).join("-");
+    artist = process.argv.slice(3).join("-");
     let queryUrl = `https://api.seatgeek.com/2/events?client_id=ODU1MTQ4M3wxNTczNjc5ODUyLjkz&performers.slug=${artist}`;
     axios.get(queryUrl).then(function (response) {
         console.log("Venue: " + response.data.events[0].venue.name)
